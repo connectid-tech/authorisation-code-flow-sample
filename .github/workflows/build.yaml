@@ -1,0 +1,35 @@
+name: Build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '15.x'
+          registry-url: 'https://npm.pkg.github.com'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Unit tests
+        run: npm test
+      - name: Install wait-on
+        run: npm install -g wait-on
+      - name: Start server for E2E testing
+        run: npm run serve & npx wait-on -t 10000 http://localhost:3000
+      - name: Run E2E tests
+        env:
+          IDP_USERNAME: ${{ secrets.IDP_USERNAME }}
+          ISP_PASSWORD: ${{ secrets.ISP_PASSWORD }}
+        run: npm run cy:test --  --env idpUsername="$IDP_USERNAME",idpPassword="$ISP_PASSWORD"
