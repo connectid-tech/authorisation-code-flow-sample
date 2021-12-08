@@ -1,0 +1,8 @@
+{
+  "authUrl": "https://broker.sandbox.connectid.com.au/broker/oidc/authorization",
+  "tokenUrl": "https://broker.sandbox.connectid.com.au/broker/oidc/token",
+  "userInfoUrl": "https://broker.sandbox.connectid.com.au/broker/oidc/userinfo",
+  "clientId": "YOUR_CLIENT_ID",
+  "redirectUri": "YOUR_REDIRECT_URI",
+  "clientSecret": "YOUR_CLIENT_SECRET"
+}
