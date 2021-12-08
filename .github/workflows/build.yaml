@@ -23,7 +23,7 @@ jobs:
       - name: Install wait-on
         run: npm install -g wait-on
       - name: Start server for E2E testing
-      env:
+        env:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           REDIRECT_URI: ${{ secrets.REDIRECT_URI }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
