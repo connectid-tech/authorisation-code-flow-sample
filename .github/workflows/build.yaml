@@ -23,13 +23,6 @@ jobs:
       - name: Install wait-on
         run: npm install -g wait-on
       - name: Start server for E2E testing
-        env:
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          REDIRECT_URI: ${{ secrets.REDIRECT_URI }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-        run: CLIENT_ID="$CLIENT_ID" REDIRECT_URI="$REDIRECT_URI" CLIENT_SECRET="$CLIENT_SECRET" npm start & npx wait-on -t 10000 http://localhost:8080
+        run: CLIENT_ID="${{ secrets.CLIENT_ID }}" REDIRECT_URI="${{ secrets.REDIRECT_URI }}" CLIENT_SECRET="${{ secrets.CLIENT_SECRET }}" npm start & npx wait-on -t 10000 http://localhost:8080
       - name: Run E2E tests
-        env:
-          IDP_USERNAME: ${{ secrets.IDP_USERNAME }}
-          IDP_PASSWORD: ${{ secrets.IDP_PASSWORD }}
-        run: npm run cy:test --  --env idpUsername="$IDP_USERNAME",idpPassword="$IDP_PASSWORD"
+        run: npm run cy:test --  --env idpUsername="${{ secrets.IDP_USERNAME }}",idpPassword="${{ secrets.IDP_PASSWORD }}"
