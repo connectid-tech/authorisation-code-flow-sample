@@ -6,6 +6,9 @@ import axios from 'axios'
 const config = require('../config.json')
 const app = express()
 const port = process.env.PORT
+const clientId = process.env.CLIENT_ID || config.clientId
+const redirectUri = process.env.REDIRECT_URI || config.redirectUri
+const clientSecret = process.env.CLIENT_SECRET || config.clientSecret
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'index.html'))
@@ -14,8 +17,8 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
   const url = new URL(config.authUrl)
   url.searchParams.append('response_type', 'code')
-  url.searchParams.append('client_id', config.clientId)
-  url.searchParams.append('redirect_uri', config.redirectUri)
+  url.searchParams.append('client_id', clientId)
+  url.searchParams.append('redirect_uri', redirectUri)
   url.searchParams.append('acr_values', 'urn:connectid.com.au:loa:ip1.5:al2 urn:connectid.com.au:loa:ip2.5:al2')
   url.searchParams.append('scope', 'openid profile')
   // claims param example
@@ -31,10 +34,10 @@ app.get('/cb', async (req, res) => {
 
   const params = new URLSearchParams()
   params.append('grant_type', 'authorization_code')
-  params.append('client_secret', config.clientSecret)
+  params.append('client_secret', clientSecret)
   params.append('code', code!)
-  params.append('client_id', config.clientId)
-  params.append('redirect_uri', config.redirectUri)
+  params.append('client_id', clientId)
+  params.append('redirect_uri', redirectUri)
 
   try {
     const tokenResponse = await axios.post(config.tokenUrl, params, {
