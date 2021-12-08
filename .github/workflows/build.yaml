@@ -32,4 +32,4 @@ jobs:
         env:
           IDP_USERNAME: ${{ secrets.IDP_USERNAME }}
           IDP_PASSWORD: ${{ secrets.IDP_PASSWORD }}
-        run: npm run cy:test --  --env idpUsername="$IDP_USERNAME",idpPassword="$ISP_PASSWORD"
+        run: npm run cy:test --  --env idpUsername="$IDP_USERNAME",idpPassword="$IDP_PASSWORD"
