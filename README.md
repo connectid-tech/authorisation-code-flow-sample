@@ -28,7 +28,7 @@ npm start
 
 It will start the app on `http://localhost:8080`. Once the app is loaded on your browser you should see a login button.
 
-When the login button is clicked the app will be redirected to an Identity Provider Selection page. Follow the steps below to proceed:
+When the login button is clicked the app will be redirected to the Identity Provider Selection page. Follow the steps below to proceed:
 
 1. Select the `Reference ISP` provider.
 1. Log in with our test identity credentials.
