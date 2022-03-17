@@ -40,7 +40,6 @@ The app should show a json with the user requested data. E.g.:
 {
   "sub": "201092f0-9720-4a91-9ff5-cc411621bb22",
   "aud": "paCo4LGT7VeCdwx88wzQxQ",
-  "verified_claims": [ ],
   "birthdate": "1982-07-25",
   "prefix": "Dr",
   "iss": "https://broker.sandbox.connectid.com.au/broker",
