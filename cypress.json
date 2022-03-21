@@ -1,0 +1,8 @@
+{
+  "baseUrl": "http://localhost:8080",
+  "chromeWebSecurity": false,
+  "env": {
+    "idpUsername": "TEST_IDENTITY_USERNAME",
+    "idpPassword": "TEST_IDENTITY_PASSWORD"
+  }
+}
